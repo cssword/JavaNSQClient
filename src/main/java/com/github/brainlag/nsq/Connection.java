@@ -126,7 +126,8 @@ public class Connection {
             if (errorCallback != null) {
                 errorCallback.error(NSQException.of((ErrorFrame) frame));
             }
-            responses.add(frame);
+//            responses.add(frame);
+            responses.offer(frame, 1, TimeUnit.SECONDS);
             return;
         }
 
